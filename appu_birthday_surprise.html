@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Appu 💗</title>
+<style>
+:root{--pink:#ff4f91;--deep:#d92c70;--pale:#fff0f6;--ink:#8c3159}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Georgia,'Trebuchet MS',sans-serif;color:var(--ink);background:radial-gradient(circle at 20% 10%,#fff 0 2px,transparent 3px),linear-gradient(145deg,#ffe8f1,#ffd2e4 55%,#fff0f6);background-size:34px 34px,auto;overflow-x:hidden}
+.hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}.heart{position:absolute;bottom:-50px;animation:float 12s linear infinite;opacity:.35;color:#ff6fa7}@keyframes float{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+main{position:relative;z-index:1;width:min(100% - 28px,480px);margin:22px auto 35px;min-height:calc(100vh - 55px);display:flex;align-items:center;justify-content:center}
+.panel{display:none;width:100%;text-align:center;animation:appear .45s ease}.panel.active{display:block}@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card{background:#ffffffc9;border:1px solid #fff;box-shadow:0 12px 35px #c94c7b22;border-radius:26px;padding:26px 22px}
+h1{font-size:clamp(2rem,8vw,3rem);color:var(--deep);margin:8px 0 12px}h2{font-size:1.6rem;color:var(--deep);margin:8px 0 18px}p{line-height:1.7}.emoji{font-size:4rem;display:block;margin:8px}.small{font-size:.9rem;opacity:.8}
+input{font-size:1.5rem;letter-spacing:12px;text-align:center;width:190px;padding:12px 10px;border:2px solid #ffc1d9;border-radius:14px;background:#fff8fb;color:var(--deep);outline:none}
+button{border:0;border-radius:999px;padding:13px 22px;background:var(--pink);color:white;font-weight:bold;font-size:1rem;cursor:pointer;box-shadow:0 6px 14px #d92c7030;margin:8px 4px;transition:.2s}button:hover{transform:translateY(-2px);background:var(--deep)}button.secondary{background:#fff;color:var(--deep);border:1px solid #ffc1d9;box-shadow:none}
+.error{min-height:22px;color:#bd235c;font-size:.9rem}.dots{color:#ff8eb7;font-size:1.2rem;letter-spacing:8px}
+.balloon-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:22px 0}.balloon{width:54px;height:68px;border-radius:50% 50% 46% 46%;background:linear-gradient(120deg,#ffc5dc,#ff6fa7);position:relative;box-shadow:inset -8px -4px 0 #dc347d22;cursor:pointer;transition:.3s}.balloon:after{content:'';position:absolute;bottom:-7px;left:23px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:9px solid #ff7eb0}.balloon:before{content:'';position:absolute;top:67px;left:26px;height:26px;border-left:1px solid #d88ca9}.balloon.popped{transform:scale(0);opacity:0}.reveal{font-size:1.1rem;color:var(--deep);min-height:30px}
+.candle{font-size:5rem;cursor:pointer;filter:drop-shadow(0 4px 8px #f0a1bb)}.bouquet{font-size:5rem;letter-spacing:-10px}.letter{background:#fffafc;border:1px solid #f7b6cf;border-radius:8px;padding:22px;text-align:left;box-shadow:4px 5px 0 #f5b3ce;line-height:1.85;white-space:pre-line}.gift{font-size:6rem;cursor:pointer;animation:bob 2s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-9px)}}.footer{font-size:.78rem;opacity:.65;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="hearts" id="hearts"></div>
+<main>
+<section class="panel active" id="login"><div class="card">
+<span class="emoji">🔐💗</span><h2>A little surprise for Appu</h2><p>Enter the secret passcode to unlock your birthday surprise.</p>
+<input id="pass" type="password" inputmode="numeric" maxlength="4" placeholder="••••" aria-label="Passcode">
+<br><button onclick="unlock()">Unlock my surprise ✨</button><div class="error" id="err"></div><div class="dots">♡ ♡ ♡</div>
+</div></section>
+<section class="panel" id="welcome"><div class="card"><span class="emoji">🎉🐻🎂🐰</span><h1>Happy Birthday,<br>Appu!</h1><p>Today is all about you. I made a tiny world full of love, just for you. 💕</p><button onclick="go('balloons')">Let's begin 💌</button></div></section>
+<section class="panel" id="balloons"><div class="card"><h2>Pop all 4 balloons 🎈</h2><p>Tap every balloon to reveal a little wish.</p><div class="balloon-row" id="balloonRow"></div><div class="reveal" id="balloonMsg"></div><button id="balloonNext" style="display:none" onclick="go('candle')">Next surprise →</button></div></section>
+<section class="panel" id="candle"><div class="card"><h2>Make a wish, Appu 🕯️</h2><p>Take a deep breath, close your eyes, and make a wish.</p><div class="candle" onclick="blow()">🕯️</div><div class="reveal" id="candleMsg">Tap the candle when you're ready.</div><button id="candleNext" style="display:none" onclick="go('roses')">My wish is made ✨</button></div></section>
+<section class="panel" id="roses"><div class="card"><h2>Your Rose Bouquet 🌹</h2><div class="bouquet">💐</div><p>For someone who makes ordinary days feel special.</p><div class="letter" style="text-align:center">You are my sunshine ☀️<br>You make my world beautiful 💗<br>I'm lucky to have you.</div><button onclick="go('letter')">Continue →</button></div></section>
+<section class="panel" id="letter"><div class="card"><h2>A Message From My Heart 💌</h2><div class="letter">Dear Appu, 💗
+
+Happy Birthday to someone truly special. I hope your day is filled with smiles, laughter, and all the little things that make you happy.
+
+May this new year of your life bring you peace, courage, beautiful memories, and dreams that come true. Even on difficult days, remember how precious you are and how much light you bring into the world.
+
+Keep smiling, keep being yourself, and never forget that you deserve all the love and happiness life has to offer.
+
+With lots of love,
+Someone who wishes you the very best 💕</div><button onclick="go('gift')">One last surprise →</button></div></section>
+<section class="panel" id="gift"><div class="card"><h2>One Last Thing…</h2><p>Tap the gift 🎁</p><div class="gift" onclick="openGift()">🎁</div><div id="giftMsg" class="reveal"></div><button onclick="go('final')" id="finalBtn" style="display:none">Open your final card 💖</button></div></section>
+<section class="panel" id="final"><div class="card"><span class="emoji">🐰🎂🐻</span><h1>Lots of love for you! ❤️</h1><p>Once again, Happy Birthday, Appu!</p><p>May your smile stay bright and your heart stay happy. ✨</p><div class="dots">♡ ♡ ♡</div><button class="secondary" onclick="go('welcome')">Replay the surprise ↻</button></div></section>
+</main>
+<script>
+const hearts=document.getElementById('hearts');
+for(let i=0;i<22;i++){let h=document.createElement('span');h.className='heart';h.textContent=['♥','♡','✦'][i%3];h.style.left=Math.random()*100+'%';h.style.animationDelay=Math.random()*12+'s';h.style.animationDuration=(9+Math.random()*9)+'s';h.style.fontSize=(14+Math.random()*20)+'px';hearts.appendChild(h)}
+function go(id){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function unlock(){if(document.getElementById('pass').value==='1723'){document.getElementById('err').textContent='';go('welcome')}else{document.getElementById('err').textContent='Oops! That passcode is not right. Try again 💗'}}
+document.getElementById('pass').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+const wishes=['You deserve endless happiness 💗','May every dream come true ✨','Keep shining, always 🌟','You are loved more than you know 💌'];let popped=0;
+const row=document.getElementById('balloonRow');wishes.forEach((wish,i)=>{let b=document.createElement('div');b.className='balloon';b.setAttribute('aria-label','Pop balloon');b.onclick=()=>{if(b.classList.contains('popped'))return;b.classList.add('popped');document.getElementById('balloonMsg').textContent=wish;popped++;if(popped===4){document.getElementById('balloonMsg').textContent='All wishes unlocked! May your day be magical. 💖';document.getElementById('balloonNext').style.display='inline-block'}};row.appendChild(b)});
+function blow(){document.querySelector('.candle').textContent='🎂';document.getElementById('candleMsg').textContent='Wish sent to the universe! May it come true. ✨';document.getElementById('candleNext').style.display='inline-block'}
+function openGift(){document.querySelector('.gift').textContent='💝';document.getElementById('giftMsg').textContent='The best gift is seeing you happy. You deserve all the good things! 💗';document.getElementById('finalBtn').style.display='inline-block'}
+</script>
+</body></html>
